@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation: Vamsi & Swetha</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- GLOBAL ROOT VARIABLES --- */
+        :root {
+            --bg-color: #fdf0e6;
+            --gold: #c9a84c;
+            --gold-dark: #aa8933;
+            --mauve: #7d5262;
+            --champagne: #f4e6d4;
+            --text-dark: #2c2520;
+            --font-script: 'Great Vibes', cursive;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        /* --- BASE STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            color: var(--mauve);
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 1.5rem auto;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- UTILITIES & REUSABLE --- */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem auto;
+            color: var(--gold);
+            font-size: 1.2rem;
+            width: 80%;
+            max-width: 400px;
+        }
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            margin: 0 15px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--mauve);
+            color: #fff;
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 12px 30px;
+            border: 1px solid var(--mauve);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn:hover {
+            background-color: transparent;
+            color: var(--mauve);
+            border-color: var(--mauve);
+            transform: translateY(-2px);
+        }
+        .section-padding {
+            padding: 5rem 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* --- ANIMATIONS --- */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            visibility: hidden;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+            visibility: visible;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* ELEGANT BLINKING/GLOW EFFECT */
+        @keyframes elegantBlink {
+            0%, 100% { opacity: 1; transform: scale(1); text-shadow: 0 0 10px rgba(201, 168, 76, 0.2); }
+            50% { opacity: 0.4; transform: scale(0.98); text-shadow: 0 0 2px rgba(201, 168, 76, 0); }
+        }
+        .pulsing-glow {
+            animation: elegantBlink 2.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        /* --- TICKER / MARQUEE --- */
+        .ticker-wrap {
+            width: 100%;
+            background-color: var(--mauve);
+            color: var(--champagne);
+            overflow: hidden;
+            padding: 8px 0;
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+        .ticker {
+            display: inline-block;
+            white-space: nowrap;
+            padding-left: 100%;
+            animation: marquee 25s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+        .ticker span {
+            display: inline-block;
+            padding: 0 2rem;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 7rem 1.5rem 4rem 1.5rem;
+            background: radial-gradient(circle, rgba(253,240,230,0.4) 0%, rgba(244,230,212,0.3) 100%);
+            position: relative;
+        }
+        .family-title-badge {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--mauve);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding: 10px 20px;
+            border-top: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            text-transform: uppercase;
+        }
+        .hero-names {
+            font-family: var(--font-script);
+            font-size: 5rem;
+            color: var(--mauve);
+            line-height: 1.2;
+            margin: 1.5rem 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+        .tagline {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+        .hero-parents {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--text-dark);
+            margin-bottom: 2.5rem;
+            text-align: center;
+            opacity: 0.9;
+        }
+        .wedding-date-hero {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-dark);
+            border-top: 1px solid var(--gold);
+            border-bottom: 1px solid var(--gold);
+            padding: 10px 20px;
+        }
+
+        /* --- ABOUT / STORY SECTION --- */
+        .story-heading {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .quote-line {
+            font-style: italic;
+            color: var(--gold-dark);
+            font-size: 1.35rem;
+            margin: 2rem auto;
+            text-align: center;
+            display: block;
+            width: 100%;
+        }
+        .family-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .family-column h4 {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-dark);
+            margin-bottom: 0.8rem;
+        }
+        .family-column p {
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        /* --- COUNTDOWN TIMER --- */
+        .countdown-section {
+            background-color: var(--champagne);
+            text-align: center;
+        }
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .countdown-box {
+            background: #fff;
+            padding: 20px;
+            min-width: 90px;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            border-bottom: 3px solid var(--gold);
+        }
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--mauve);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        .countdown-label {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #777;
+        }
+
+        /* --- SCHEDULE / EVENTS --- */
+        .events-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .event-card {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+        .event-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .event-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .event-time {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--gold-dark);
+            margin-bottom: 1rem;
+        }
+        
+        /* TIMELINE */
+        .timeline {
+            position: relative;
+            max-width: 400px;
+            margin: 4rem auto 3rem auto;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: var(--gold);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        .timeline-item::before {
+            content: '✦';
+            position: absolute;
+            left: -30px;
+            top: -2px;
+            background: var(--bg-color);
+            color: var(--gold-dark);
+            width: 16px;
+            height: 16px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--mauve);
+            text-align: left;
+        }
+        .timeline-time {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* --- HIGHLIGHT CARD --- */
+        .highlight-container {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        .highlight-card {
+            background-color: var(--champagne);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px dashed var(--gold);
+            position: relative;
+        }
+        .highlight-card h3 {
+            font-family: var(--font-script);
+            font-size: 3rem;
+            margin: 0.5rem 0;
+        }
+
+        /* --- VENUE / MAP SECTION --- */
+        .venue-details {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .venue-address {
+            color: #555;
+            margin-bottom: 2rem;
+        }
+        .map-wrapper {
+            margin-top: 2.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid var(--gold);
+            height: 350px;
+        }
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--mauve);
+            color: var(--champagne);
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+        footer h2 {
+            color: var(--champagne);
+            font-family: var(--font-script);
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+        footer .footer-quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--bg-color);
+            text-align: center;
+        }
+        footer .footer-parents {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* --- MUSIC TOGGLE --- */
+        .music-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--mauve);
+            color: var(--champagne);
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: transform 0.3s;
+        }
+        .music-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .family-title-badge { font-size: 1.4rem; padding: 6px 12px; letter-spacing: 1.5px; }
+            .hero-names { font-size: 3.5rem; }
+            .family-columns, .events-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .story-heading { font-size: 2rem; }
+            .section-padding { padding: 4rem 1.2rem; }
+            .countdown-container { gap: 0.8rem; }
+            .countdown-box { min-width: 75px; padding: 15px 10px; }
+            .countdown-number { font-size: 1.8rem; }
+        }
+    </style>
+
+    <!-- INJECT LIVE REFRESH AUTO-PALETTE ALGORITHM BEFORE CONTENT RENDERS -->
+    <script>
+        const aestheticPalettes = [
+            { mauve: "#7d5262", gold: "#c9a84c", goldDark: "#aa8933", champagne: "#f4e6d4", bg: "#fdf0e6" }, // Original Mauve & Ivory
+            { mauve: "#4a6b5d", gold: "#d4af37", goldDark: "#a38118", champagne: "#e8f0ec", bg: "#f4fcf8" }, // Sage & Antique Gold
+            { mauve: "#8c4f4f", gold: "#cca43b", goldDark: "#9e771b", champagne: "#f7eded", bg: "#fffafb" }, // Terracotta & Champagne Rose
+            { mauve: "#544a7d", gold: "#e2b744", goldDark: "#b88e19", champagne: "#eae7f2", bg: "#faf9ff" }, // Rich Lavender & Vintage Gold
+            { mauve: "#824936", gold: "#d6ae5c", goldDark: "#ab8232", champagne: "#f9f2eb", bg: "#fffcf9" }  // Earthy Copper Velvet
+        ];
+
+        // Fetch random design set
+        const selectedSet = aestheticPalettes[Math.floor(Math.random() * aestheticPalettes.length)];
+        
+        // Target document element structure rules directly before paint cycle
+        document.documentElement.style.setProperty('--mauve', selectedSet.mauve);
+        document.documentElement.style.setProperty('--gold', selectedSet.gold);
+        document.documentElement.style.setProperty('--gold-dark', selectedSet.goldDark);
+        document.documentElement.style.setProperty('--champagne', selectedSet.champagne);
+        document.documentElement.style.setProperty('--bg-color', selectedSet.bg);
+    </script>
+</head>
+<body>
+
+    <!-- BACKGROUND MUSIC (Slow Pleasant Classical Solo Violin Track) -->
+    <audio id="bg-music" loop>
+        <source src="https://storage.googleapis.com/ik-blog-assets/music/violin-solitude.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+    </audio>
+    <button class="music-toggle" id="music-btn" title="Toggle Music">♪</button>
+
+    <!-- TICKER BAR -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span>Vamsi ✦ Swetha</span>
+            <span>Thursday · 25 June · 2026</span>
+            <span>ARM Convention, Guntur</span>
+            <span>Vamsi ✦ Swetha</span>
+            <span>Thursday · 25 June · 2026</span>
+            <span>ARM Convention, Guntur</span>
+        </div>
+    </div>
+
+    <!-- HERO / BANNER SECTION -->
+    <section class="hero">
+        <div class="family-title-badge pulsing-glow">Thotlapalepu's Wedding Invitation</div>
+        <div class="hero-names floating">Vamsi & Swetha</div>
+        <div class="tagline">Cordially invite you to their wedding celebration</div>
+        
+        <div class="divider">✦</div>
+        
+        <div class="hero-parents">
+            Dr. T. C H Koteswara Rao & Sarala Devi &nbsp;✦&nbsp; V. Samuel Kumar & Phoebe
+        </div>
+        
+        <div class="wedding-date-hero">
+            Thursday · 25 June · 2026
+        </div>
+    </section>
+
+    <!-- ABOUT / STORY SECTION -->
+    <section class="section-padding fade-in-section">
+        <h2 class="story-heading">Together with our families</h2>
+        <div class="divider">✦</div>
+        <p>
+            Because you have played a very special role in our lives, we, 
+            <strong><em>Vamsi</em></strong> and <strong><em>Swetha</em></strong>, 
+            along with our beloved parents, joyfully invite you to share in a celebration of love, commitment, and the blending of two families.
+        </p>
+        
+        <div class="quote-line">✦ Two hearts, one promise, a lifetime of love ✦</div>
+        
+        <div class="family-columns">
+            <div class="family-column">
+                <h4>Groom's Family</h4>
+                <p>Dr. T. C H Koteswara Rao<br>& Sarala Devi</p>
+            </div>
+            <div class="family-column">
+                <h4>Bride's Family</h4>
+                <p>V. Samuel Kumar<br>& Phoebe</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COUNTDOWN TIMER SECTION -->
+    <section class="countdown-section section-padding fade-in-section" style="max-width: 100%;">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <h2>Counting Every Moment</h2>
+            <p style="font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 0.5rem; color: var(--gold-dark);">
+                Days Until We Say "I Do"
+            </p>
+            
+            <div class="countdown-container" id="countdown">
+                <div class="countdown-box">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Mins</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Secs</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENTS / SCHEDULE SECTION -->
+    <section class="section-padding fade-in-section">
+        <h2>Wedding & Dinner</h2>
+        <div class="divider">✦</div>
+        
+        <div class="events-grid">
+            <div class="event-card">
+                <div class="event-icon">💍</div>
+                <h3 class="event-title">Wedding Ceremony</h3>
+                <div class="event-time">Thursday, June 25, 2026</div>
+                <p style="font-weight: 600; margin-bottom: 0;">7 PM Onwards</p>
+            </div>
+            
+            <div class="event-card">
+                <div class="event-icon">🍽️</div>
+                <h3 class="event-title">Reception Dinner</h3>
+                <div class="event-time">Thursday, June 25, 2026</div>
+                <p style="font-weight: 600; margin-bottom: 0;">8 PM Onwards</p>
+            </div>
+        </div>
+
+        <!-- Visual Timeline -->
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-title">Wedding Ceremony Begins</div>
+                <div class="timeline-time">7:00 PM</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-title">Dinner & Celebrations</div>
+                <div class="timeline-time">8:00 PM Onwards</div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Celebration:+Vamsi+%26+Swetha&dates=20260625T133000Z/20260625T183000Z&details=Join+us+for+the+wedding+ceremony+and+reception+dinner+of+Vamsi+and+Swetha.&location=ARM+Convention,+Opp+Decathlon,+Mahatma+Gandhi+Inner+Ring+Road,+Guntur,+Andhra+Pradesh+522034&sf=true&output=xml" 
+               target="_blank" class="btn">
+               Add to Calendar
+            </a>
+        </div>
+    </section>
+
+    <!-- LOVE STORY / HIGHLIGHT CARD -->
+    <section class="section-padding fade-in-section">
+        <div class="highlight-container">
+            <div class="highlight-card">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">💐</div>
+                <h3>Vamsi & Swetha</h3>
+                <p style="font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 0.5rem;">
+                    June 25, 2026
+                </p>
+                <p style="font-weight: 600; margin: 0;">ARM Convention, Guntur</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- VENUE / MAP SECTION -->
+    <section class="section-padding fade-in-section">
+        <h2>Find Us Here</h2>
+        <div class="divider">✦</div>
+        
+        <div style="text-align: center;">
+            <div class="venue-details">ARM Convention</div>
+            <p class="venue-address">
+                Opp Decathlon, Mahatma Gandhi Inner Ring Road,<br>
+                Guntur — 522034, Andhra Pradesh
+            </p>
+            
+            <a href="https://maps.google.com/?q=ARM+Convention+Guntur" 
+               target="_blank" class="btn">
+               Open in Maps
+            </a>
+        </div>
+
+        <div class="map-wrapper">
+            <iframe 
+                src="https://maps.google.com/maps?q=ARM%20Convention%20Guntur&t=&z=14&ie=UTF8&iwloc=&output=embed">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <h2>Vamsi & Swetha</h2>
+        <p style="font-family: var(--font-sans); letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 1rem;">
+            25.06.2026 · ARM CONVENTION
+        </p>
+        <div class="footer-quote">"Two families, one blessing, a lifetime of love"</div>
+        <div class="footer-parents">
+            Dr. T. C H Koteswara Rao & Sarala Devi &nbsp;✦&nbsp; V. Samuel Kumar & Phoebe
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // --- LIVE TIMER CONFIGURATION ---
+        const targetDate = new Date("June 25, 2026 19:00:00").getTime();
+
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "<div class='wedding-date-hero'>The Celebration Has Begun!</div>";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        }, 1000);
+
+
+        // --- FADE SCROLL INTERSECTION OBSERVER ---
+        const sections = document.querySelectorAll('.fade-in-section');
+        const options = { root: null, threshold: 0.1, rootMargin: "0px 0px -40px 0px" };
+
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        sections.forEach(section => { observer.observe(section); });
+
+
+        // --- BACKGROUND AUDIO ENGINE ---
+        const music = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-btn');
+        let isPlaying = false;
+
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.innerText = "♪";
+                musicBtn.style.opacity = "0.7";
+            } else {
+                music.play().catch(err => console.log("Audio requires user tap interaction first."));
+                musicBtn.innerText = "⏸";
+                musicBtn.style.opacity = "1";
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+</body>
+</html>
