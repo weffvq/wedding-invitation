@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Invitation: Vamsi & Swetha</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -39,6 +38,7 @@
             font-size: 1.15rem;
             line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
         h1, h2, h3, h4 {
             font-family: var(--font-serif);
@@ -54,6 +54,28 @@
         a {
             text-decoration: none;
             color: inherit;
+        }
+
+        /* --- SPARKLING STAR TOUCH EFFECT STYLES --- */
+        .sparkle-particle {
+            position: absolute;
+            pointer-events: none;
+            font-size: 1.2rem;
+            color: var(--gold);
+            line-height: 1;
+            z-index: 9999;
+            animation: burstAndFade 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            user-select: none;
+        }
+        @keyframes burstAndFade {
+            0% {
+                transform: translate(-50%, -50%) translate(0, 0) scale(0.3) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) translate(var(--mx), var(--my)) scale(1.2) rotate(var(--rot));
+                opacity: 0;
+            }
         }
 
         /* --- UTILITIES & REUSABLE --- */
@@ -489,7 +511,6 @@
         }
     </style>
 
-    <!-- INJECT LIVE REFRESH AUTO-PALETTE ALGORITHM BEFORE CONTENT RENDERS -->
     <script>
         const aestheticPalettes = [
             { mauve: "#7d5262", gold: "#c9a84c", goldDark: "#aa8933", champagne: "#f4e6d4", bg: "#fdf0e6" }, // Original Mauve & Ivory
@@ -512,14 +533,12 @@
 </head>
 <body>
 
-    <!-- BACKGROUND MUSIC (Slow Pleasant Classical Solo Violin Track) -->
     <audio id="bg-music" loop>
         <source src="https://storage.googleapis.com/ik-blog-assets/music/violin-solitude.mp3" type="audio/mpeg">
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
     </audio>
     <button class="music-toggle" id="music-btn" title="Toggle Music">♪</button>
 
-    <!-- TICKER BAR -->
     <div class="ticker-wrap">
         <div class="ticker">
             <span>Vamsi ✦ Swetha</span>
@@ -531,7 +550,6 @@
         </div>
     </div>
 
-    <!-- HERO / BANNER SECTION -->
     <section class="hero">
         <div class="family-title-badge pulsing-glow">Thotlapalepu's Wedding Invitation</div>
         <div class="hero-names floating">Vamsi & Swetha</div>
@@ -540,7 +558,7 @@
         <div class="divider">✦</div>
         
         <div class="hero-parents">
-            Dr. T. C H Koteswara Rao & Sarala Devi &nbsp;✦&nbsp; V. Samuel Kumar & Phoebe
+            Dr. T. C H Koteswara Rao & Sarala Devi  ✦  V. Samuel Kumar & Phoebe
         </div>
         
         <div class="wedding-date-hero">
@@ -548,7 +566,6 @@
         </div>
     </section>
 
-    <!-- ABOUT / STORY SECTION -->
     <section class="section-padding fade-in-section">
         <h2 class="story-heading">Together with our families</h2>
         <div class="divider">✦</div>
@@ -572,7 +589,6 @@
         </div>
     </section>
 
-    <!-- COUNTDOWN TIMER SECTION -->
     <section class="countdown-section section-padding fade-in-section" style="max-width: 100%;">
         <div style="max-width: 1000px; margin: 0 auto;">
             <h2>Counting Every Moment</h2>
@@ -601,7 +617,6 @@
         </div>
     </section>
 
-    <!-- EVENTS / SCHEDULE SECTION -->
     <section class="section-padding fade-in-section">
         <h2>Wedding & Dinner</h2>
         <div class="divider">✦</div>
@@ -622,7 +637,6 @@
             </div>
         </div>
 
-        <!-- Visual Timeline -->
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-title">Wedding Ceremony Begins</div>
@@ -635,14 +649,13 @@
         </div>
 
         <div style="text-align: center;">
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Celebration:+Vamsi+%26+Swetha&dates=20260625T133000Z/20260625T183000Z&details=Join+us+for+the+wedding+ceremony+and+Dinner+dinner+of+Vamsi+and+Swetha.&location=ARM+Convention,+Opp+Decathlon,+Mahatma+Gandhi+Inner+Ring+Road,+Guntur,+Andhra+Pradesh+522034&sf=true&output=xml" 
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Celebration:+Vamsi+%26+Swetha&dates=20260625T133000Z/20260625T183000Z&details=Join+us+for+the+wedding+ceremony+and+reception+dinner+of+Vamsi+and+Swetha.&location=ARM+Convention,+Opp+Decathlon,+Mahatma+Gandhi+Inner+Ring+Road,+Guntur,+Andhra+Pradesh+522034&sf=true&output=xml" 
                target="_blank" class="btn">
                Add to Calendar
             </a>
         </div>
     </section>
 
-    <!-- LOVE STORY / HIGHLIGHT CARD -->
     <section class="section-padding fade-in-section">
         <div class="highlight-container">
             <div class="highlight-card">
@@ -656,7 +669,6 @@
         </div>
     </section>
 
-    <!-- VENUE / MAP SECTION -->
     <section class="section-padding fade-in-section">
         <h2>Find Us Here</h2>
         <div class="divider">✦</div>
@@ -681,7 +693,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <h2>Vamsi & Swetha</h2>
         <p style="font-family: var(--font-sans); letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 1rem;">
@@ -689,12 +700,64 @@
         </p>
         <div class="footer-quote">"Two families, one blessing, a lifetime of love"</div>
         <div class="footer-parents">
-            Dr. T. C H Koteswara Rao & Sarala Devi &nbsp;✦&nbsp; V. Samuel Kumar & Phoebe
+            Dr. T. C H Koteswara Rao & Sarala Devi  ✦  V. Samuel Kumar & Phoebe
         </div>
     </footer>
 
-    <!-- INTERACTIVE SCRIPTS -->
     <script>
+        // --- SPARKLING STAR TOUCH EFFECT ENGINE ---
+        const sparkleStars = ['✦', '✧', '★', '*'];
+        
+        function createSparkleBurst(e) {
+            // Support both mouse clicks and mobile finger touch locations
+            const posX = e.touches ? e.touches[0].pageX : e.pageX;
+            const posY = e.touches ? e.touches[0].pageY : e.pageY;
+            
+            // Create 8 elegant burst elements per interaction node
+            for (let i = 0; i < 8; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'sparkle-particle';
+                
+                // Pick a random style variation symbol
+                particle.innerText = sparkleStars[Math.floor(Math.random() * sparkleStars.length)];
+                
+                // Position initial point vector coordinate
+                particle.style.left = posX + 'px';
+                particle.style.top = posY + 'px';
+                
+                // Map randomized directional dispersion trajectories
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 40 + Math.random() * 80;
+                const moveX = Math.cos(angle) * distance + 'px';
+                const moveY = Math.sin(angle) * distance + 'px';
+                const rotation = (Math.random() * 360) + 'deg';
+                
+                // Inject spatial calculation parameters safely directly into properties
+                particle.style.setProperty('--mx', moveX);
+                particle.style.setProperty('--my', moveY);
+                particle.style.setProperty('--rot', rotation);
+                
+                // Mix in current palette tone parameters for uniform elegance
+                if (Math.random() > 0.5) {
+                    particle.style.color = 'var(--gold)';
+                } else {
+                    particle.style.color = 'var(--mauve)';
+                }
+                
+                document.body.appendChild(particle);
+                
+                // Clean up memory DOM footprint dynamically after complete animation lifecycle
+                setTimeout(() => {
+                    particle.remove();
+                }, 800);
+            }
+        }
+
+        // Attach listener event handlers across both modern browser structural engines
+        window.addEventListener('click', createSparkleBurst);
+        window.addEventListener('touchstart', createSparkleBurst, { passive: true });
+
+
         // --- LIVE TIMER CONFIGURATION ---
         const targetDate = new Date("June 25, 2026 19:00:00").getTime();
 
@@ -741,13 +804,14 @@
         const musicBtn = document.getElementById('music-btn');
         let isPlaying = false;
 
-        musicBtn.addEventListener('click', () => {
+        musicBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Avoid generating touch sparkles directly underneath audio toggle node
             if (isPlaying) {
                 music.pause();
                 musicBtn.innerText = "♪";
                 musicBtn.style.opacity = "0.7";
             } else {
-                music.play().catch(err => console.log("Audio requires user tap interaction first."));
+                music.play().catch(err => console.log("Audio target standard deployment block logic."));
                 musicBtn.innerText = "⏸";
                 musicBtn.style.opacity = "1";
             }
